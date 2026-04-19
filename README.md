@@ -1,6 +1,6 @@
 # Pub GUI
 
-A beautiful, cross-platform graphical user interface for managing Flutter/Dart package dependencies. Search, browse, and add packages from [pub.dev](https://pub.dev) with ease.
+A cross-platform desktop GUI for managing Flutter/Dart package dependencies. Search pub.dev, view installed packages, and add or remove dependencies without touching the terminal.
 
 ![Flutter](https://img.shields.io/badge/Flutter-3.10+-02569B?logo=flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/Dart-3.0+-0175C2?logo=dart&logoColor=white)
@@ -9,12 +9,12 @@ A beautiful, cross-platform graphical user interface for managing Flutter/Dart p
 
 ## Features
 
-- 🔍 **Search Packages** - Search pub.dev packages directly from the app
-- 📦 **Add Dependencies** - Add packages to your Flutter project with one click
-- 🎨 **Modern UI** - Clean Material Design 3 interface with light/dark theme support
-- 🖥️ **Cross-Platform** - Works on Windows, macOS, and Linux
-- ⚡ **Auto-Detection** - Automatically detects Flutter SDK location
-- 📋 **Package Details** - View package descriptions, versions, and homepage links
+- **Search packages** — live search against the pub.dev API with debounced input
+- **Installed dependencies** — shows all dependencies from the selected project's `pubspec.yaml` when idle
+- **Add & remove** — runs `flutter pub add` / `flutter pub remove` in your project directory
+- **Parallel fetching** — package details are fetched concurrently for fast results
+- **SDK auto-detection** — scans common install paths and `$PATH` on startup; falls back to manual selection
+- **VS Code-inspired UI** — dark-first, sidebar + main panel layout
 
 ## Screenshots
 
@@ -29,64 +29,40 @@ A beautiful, cross-platform graphical user interface for managing Flutter/Dart p
 
 ### Build from Source
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/pub_gui.git
-   cd pub_gui
-   ```
-
-2. Install dependencies:
-   ```bash
-   flutter pub get
-   ```
-
-3. Run the application:
-   ```bash
-   flutter run -d linux   # For Linux
-   flutter run -d macos   # For macOS
-   flutter run -d windows # For Windows
-   ```
+```bash
+git clone https://github.com/ardakoksal/pub_gui.git
+cd pub_gui
+flutter pub get
+flutter run -d linux    # or macos / windows
+```
 
 ### Build Release
 
 ```bash
-flutter build linux   # For Linux
-flutter build macos   # For macOS
-flutter build windows # For Windows
+flutter build linux    # or macos / windows
 ```
 
 ## Usage
 
-1. **Open the app** and it will automatically detect your Flutter SDK
-2. **Select a Flutter project** folder containing a `pubspec.yaml` file
-3. **Search for packages** using the search bar
-4. **Click "Add"** to add a package to your project's dependencies
+1. Launch the app — it will detect your Flutter SDK automatically
+2. Click **Open project folder** in the sidebar and select a folder containing `pubspec.yaml`
+3. The main panel shows your current dependencies immediately
+4. Type in the search bar to find packages on pub.dev
+5. Click **Add** to install a package, or **Remove** to uninstall one
 
 ## Dependencies
 
-- [http](https://pub.dev/packages/http) - HTTP client for pub.dev API
-- [file_selector](https://pub.dev/packages/file_selector) - Native file/folder selection
-- [url_launcher](https://pub.dev/packages/url_launcher) - Open URLs in browser
-- [process_run](https://pub.dev/packages/process_run) - Process execution utilities
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+| Package | Purpose |
+|---|---|
+| [flutter_riverpod](https://pub.dev/packages/flutter_riverpod) | State management |
+| [http](https://pub.dev/packages/http) | pub.dev API calls |
+| [file_selector](https://pub.dev/packages/file_selector) | Native folder/file picker |
+| [url_launcher](https://pub.dev/packages/url_launcher) | Open package pages in browser |
+| [process_run](https://pub.dev/packages/process_run) | Run `flutter pub` subprocesses |
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [pub.dev](https://pub.dev) for the package API
-- [Flutter](https://flutter.dev) team for the amazing framework
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ## Author
 
@@ -94,4 +70,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ and Flutter
+Made with ❤️, Flutter, and [Claude Code](https://claude.ai/code) (mostly)
